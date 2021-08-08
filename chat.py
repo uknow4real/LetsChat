@@ -28,7 +28,6 @@ for intent in intents['intents']:
 
         documents.append((w, intent['tag']))
 
-
         if intent['tag'] not in classes:
             classes.append(intent['tag'])
 
