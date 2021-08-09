@@ -1,41 +1,42 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>LetsChat</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-    <link rel="stylesheet" href="/static/main.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script src="/static/main.js"></script>
-  </head>
-  <body>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>LetsChat</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        <link rel="stylesheet" href="/static/main.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script src="/static/main.js"></script>
+    </head>
+    <body>
         <div class="container-fluid h-100">
-        <h1>Welcome to LetsChat</h1>
-            <div class="row justify-content-center h-100">
+            <h1>Welcome to LetsChat 📨</h1>
+            <div class="row justify-content-center h-75">
                 <div class="col-md-8 col-xl-6 chat">
                     <div class="card">
                         <div class="card-header msg_head">
-							<div class="d-flex bd-highlight">
-								<div class="img_cont">
-									<img src="/static/img/chatbot_icon.png" class="rounded-circle user_img" id="bot_icon">
-									<span class="online_icon"></span>
-								</div>
-								<div class="user_info">
-									<span>Chat with Prodigy</span>
-									<p>Your bestfriend when it comes to chatting!</p>
-								</div>
-							</div>
-						</div>
+                            <div class="d-flex bd-highlight">
+                                <div class="img_cont">
+                                    <img src="/static/img/chatbot_icon.png" class="rounded-circle user_img" id="bot_icon">
+                                    <span class="online_icon"></span>
+                                </div>
+                                <div class="user_info">
+                                    <span>Chat with Prodigy</span>
+                                    <p>Your bestfriend when it comes to chatting!</p>
+                                </div>
+                                <div class="date"></div>
+                            </div>
+                        </div>
                         <div class="card-body msg_card_body" id="messages"></div>
                         <div class="card-footer">
                             <div class="input-group">
-                                <textarea name="question" class="form-control type_msg" placeholder="Type your message..." id="question"></textarea>
+                                <textarea name="question" placeholder="Type your message..." class="form-control type_msg" id="question"></textarea>
                                 <div class="input-group-append">
                                     <button class="btn btn-primary btn-block" id="submit"><i class="fas fa-location-arrow"></i></button>
                                 </div>
@@ -45,5 +46,5 @@
                 </div>
             </div>
         </div>
-  </body>
+    </body>
 </html>
