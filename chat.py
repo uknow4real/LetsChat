@@ -1,25 +1,29 @@
-import nltk
-nltk.download('punkt')
-nltk.download('wordnet')
-from nltk.stem import WordNetLemmatizer
-lemmatizer = WordNetLemmatizer()
-import json
-import pickle
-
 import numpy as np
+import nltk
+from nltk.stem import WordNetLemmatizer
 from keras.models import Sequential
 from keras.layers import Dense, Activation, Dropout
 from keras.optimizers import SGD
+import json
+import pickle
 import random
 
+nltk.download('punkt')
+nltk.download('wordnet')
+
+# initialize our variables
+lemmatizer = WordNetLemmatizer()
 words=[]
 classes = []
 documents = []
-ignore_words = ['?', '!']
+ignore = ['?', '!']
+
+# open intents file
 data_file = open('intents.json', encoding='utf-8').read()
 intents = json.loads(data_file)
 
-
+# go through all intents and the corresponding patterns to create a wordlist
+# add the tags of the intents to those words
 for intent in intents['intents']:
     for pattern in intent['patterns']:
 
@@ -31,18 +35,20 @@ for intent in intents['intents']:
         if intent['tag'] not in classes:
             classes.append(intent['tag'])
 
-words = [lemmatizer.lemmatize(w.lower()) for w in words if w not in ignore_words]
-words = sorted(list(set(words)))
+# grouping together the inflected forms of a word so they can be analysed as a single item
+# convert the words to lowercase and ignore special characters ? and !
+words = [lemmatizer.lemmatize(w.lower()) for w in words if w not in ignore]
 
+# create sorted lists
+words = sorted(list(set(words)))
 classes = sorted(list(set(classes)))
 
-print (len(documents), "documents")
+# print the length of our relevant variables
+print (len(documents), "Documents")
+print (len(classes), "Classes", classes)
+print (len(words), "Unique Lemmatized Words", words)
 
-print (len(classes), "classes", classes)
-
-print (len(words), "unique lemmatized words", words)
-
-
+# use pickle to create/convert bytestream files from our lists
 pickle.dump(words,open('words.pkl','wb'))
 pickle.dump(classes,open('classes.pkl','wb'))
 
@@ -50,7 +56,6 @@ pickle.dump(classes,open('classes.pkl','wb'))
 training = []
 output_empty = [0] * len(classes)
 for doc in documents:
-
     bag = []
 
     pattern_words = doc[0]
@@ -58,7 +63,6 @@ for doc in documents:
 
     for w in words:
         bag.append(1) if w in pattern_words else bag.append(0)
-
 
     output_row = list(output_empty)
     output_row[classes.index(doc[1])] = 1
@@ -73,8 +77,7 @@ train_y = list(training[:,1])
 print("Training data created")
 
 
-# Create model - 3 layers. First layer 128 neurons, second layer 64 neurons and 3rd output layer contains number of neurons
-# equal to number of intents to predict output intent with softmax
+# creating a 3 layer model (1st layer - 128 neurons, 2nd layer - 64 neurons, 3rd layer - contains number of neurons)
 model = Sequential()
 model.add(Dense(128, input_shape=(len(train_x[0]),), activation='relu'))
 model.add(Dropout(0.5))
@@ -83,11 +86,11 @@ model.add(Dropout(0.5))
 model.add(Dense(len(train_y[0]), activation='softmax'))
 
 # Compile model. Stochastic gradient descent with Nesterov accelerated gradient gives good results for this model
-sgd = SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)
+sgd = SGD(learning_rate=0.01, decay=1e-6, momentum=0.9, nesterov=True)
 model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'])
 
-#fitting and saving the model
-hist = model.fit(np.array(train_x), np.array(train_y), epochs=200, batch_size=5, verbose=1)
+# fitting the model - 300 epochs
+hist = model.fit(np.array(train_x), np.array(train_y), epochs=300, batch_size=5, verbose=1)
+# save the model
 model.save('chatbot_model.h5', hist)
-
-print("model created")
+print("Model created.")
