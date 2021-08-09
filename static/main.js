@@ -41,7 +41,7 @@ jQuery(document).ready(function() {
             `);
         },
         error: function(result) {
-            alert('error');
+            console.log("chatbot error");
         }
     });
 
@@ -100,15 +100,39 @@ function chat() {
                 </div>
             `);
             $("#question").val("")
-                // auto scroll to the last message
-            let container = document.querySelector('#messages');
-            container.maxScrollTop = container.scrollHeight - container.offsetHeight;
-            if (container.maxScrollTop - container.scrollTop <= container.offsetHeight) {
-                container.scrollTop = container.scrollHeight;
-            }
+            autoScroll();
         },
         error: function(result) {
-            alert('error');
+            $('#type_dots').remove();
+            $("#messages").append(`
+                <div class="d-flex justify-content-end mb-4">
+                    <div class="msg_cotainer">` + $("#question").val() + `                            
+                        <span class="msg_time">` + time + `</span>
+                    </div>
+                    <div class="img_cont_msg ml-2 rounded-circle user_img_msg">
+                        <img src="/static/img/user_icon.png" class="" id="user_icon">
+                    </div>
+                </div>
+                <div class="d-flex justify-content-start mb-4">
+                    <div class="img_cont_msg mr-2">
+                        <img src="/static/img/chatbot_icon.png" class="rounded-circle user_img_msg" id="bot_icon">
+                    </div>
+                    <div class="msg_cotainer_send">Sorry, I don't know what you mean by that.
+                        <span class="msg_time_send">` + time + `</span>
+                    </div>
+                </div>
+            `);
+            $("#question").val("")
+            autoScroll();
         }
     });
+}
+
+function autoScroll() {
+    // auto scroll to the last message
+    let container = document.querySelector('#messages');
+    container.maxScrollTop = container.scrollHeight - container.offsetHeight;
+    if (container.maxScrollTop - container.scrollTop <= container.offsetHeight) {
+        container.scrollTop = container.scrollHeight;
+    }
 }

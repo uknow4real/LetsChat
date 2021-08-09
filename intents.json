@@ -1,75 +1,111 @@
 {
-    "intents": [
-      {
-        "tag": "hello",
-        "patterns":[
-          "hey",
-          "greetings",
-          "hey there",
-          "hello",
-          "hi there",
-          "i greet you",
-          "hello there",
-          "hi",
-          "good day"
-        ],
-        "responses":[
-          "Hi! How are you doing?",
-          "Hello! How can I help you?",
-          "Good day! What can I do for you today?",
-          "Greetings! How can I assist?"
-        ]
-      },
-      {
-        "tag": "diagnose",
-        "patterns":[
-          "can you diagnose me",
-          "i need a diagnose",
-          "i feel sick and need a diagnose",
-          "im sick",
-          "i feel weird",
-          "which disease do i have",
-          "i have a disease",
-          "can you tell me which disease i have?"
-        ],
-        "responses":[
-          "I can give you a diagnose. Please tell me all of your symptoms.",
-          "Please tell me all of your symptoms.",
-          "How sick do you feel? Which symptoms do you have? Please list all of them!"
-        ]
-      },
-      {
-        "tag": "symptoms_cold",
-        "patterns":[
-          "Sore throat",
-          "Cough",
-          "coughing",
-          "Congestion",
-          "body ache",
-          "headache",
-          "Sneezing",
-          "feeling unwell",
-          "Runny nose"
-        ],
-        "responses":[
-          "According to your described symptoms your diagnose is: a cold. Most of the time it is harmless, but please still consider visiting a doctor if it is going to be worse!",
-          "The diagnose is: a cold. Most of the time it is harmless, but please still consider visiting a doctor if it is going to be worse!"
-        ]
-      },
-      {
-        "tag": "definition_cold",
-        "patterns":[
-          "tell me more about colds",
-          "what about a cold",
-          "a cold",
-          "cold",
-          "is a cold harmful?",
-          "i have a cold. tell me more about it."
-        ],
-        "responses":[
-            "The common cold is a viral infection of your nose and throat (upper respiratory tract). It's usually harmless, although it might not feel that way. Many types of viruses can cause a common cold."
-        ]
-      }
+    "intents": [{
+            "tag": "hello",
+            "patterns": [
+                "hey",
+                "greetings",
+                "hey there",
+                "hello",
+                "hi there",
+                "i greet you",
+                "hello there",
+                "hi",
+                "good day"
+            ],
+            "responses": [
+                "Hi! How are you doing?",
+                "Hello! How can I help you?",
+                "Good day! What can I do for you today?",
+                "Greetings! How can I assist?"
+            ]
+        },
+        {
+            "tag": "howareyou",
+            "patterns": [
+                "how are you?",
+                "you doing good?",
+                "you good?",
+                "how are you today?"
+            ],
+            "responses": [
+                "I am good, thanks! What about you?",
+                "All good, thanks! How are you doing today?"
+            ]
+        },
+        {
+            "tag": "good",
+            "patterns": [
+                "i am good",
+                "i am good thanks",
+                "i feel good",
+                "i feel amazing",
+                "everythings fine"
+            ],
+            "responses": [
+                "I am glad to hear that! Wish you a successful day then :)"
+            ]
+        },
+        {
+            "tag": "sad",
+            "patterns": [
+                "i am sad",
+                "i feel weird",
+                "i am depressed",
+                "i dont feel good"
+            ],
+            "responses": [
+                "Oh no, hopefully it will get better soon! Tomorrow is a new day - fresh start :) guaranteed."
+            ]
+        },
+        {
+            "tag": "diagnose",
+            "patterns": [
+                "can you diagnose me",
+                "i need a diagnose",
+                "i feel sick and need a diagnose",
+                "im sick",
+                "i feel weird",
+                "which disease do i have",
+                "i have a disease",
+                "can you tell me which disease i have?"
+            ],
+            "responses": [
+                "I can give you a diagnose. Please tell me all of your symptoms.",
+                "Please tell me all of your symptoms.",
+                "How sick do you feel? Which symptoms do you have? Please list all of them!"
+            ]
+        },
+        {
+            "tag": "symptoms_cold",
+            "patterns": [
+                "Sore throat",
+                "Cough",
+                "coughing",
+                "Congestion",
+                "body ache",
+                "headache",
+                "Sneezing",
+                "feeling unwell",
+                "Runny nose"
+            ],
+            "responses": [
+                "According to your described symptoms your diagnose is: a cold. Most of the time it is harmless, but please still consider visiting a doctor if it is going to be worse!",
+                "The diagnose is: a cold. Most of the time it is harmless, but please still consider visiting a doctor if it is going to be worse!"
+            ]
+        },
+        {
+            "tag": "definition_cold",
+            "patterns": [
+                "tell me more about colds",
+                "what about a cold",
+                "a cold",
+                "cold",
+                "is a cold harmful?",
+                "i have a cold. tell me more about it."
+            ],
+            "responses": [
+                "The common cold is a viral infection of your nose and throat (upper respiratory tract). It's usually harmless, although it might not feel that way. Many types of viruses can cause a common cold."
+            ]
+        }
     ]
-  }
-  
+}
